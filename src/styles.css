@@ -453,3 +453,15 @@ dialog.confirmar .acciones { display: flex; justify-content: flex-end; gap: .6re
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Cinta superior de la hoja de portada */
+.portada__cinta {
+  display: flex; align-items: center; gap: .6rem;
+  margin: 0; padding: .8rem clamp(1.5rem, 4vw, 2.6rem);
+  background: #EEF3F8; border-bottom: 1px solid var(--linea);
+  font: 600 .95rem/1.3 var(--f-texto); color: var(--tinta);
+}
+.portada__cinta::before {
+  content: ""; flex: none; width: .7rem; height: .7rem;
+  background: var(--ambar-fuerte); border-radius: 2px;
+}
