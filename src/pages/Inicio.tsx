@@ -5,35 +5,8 @@ import { Cabecera, Pie } from '../components/Marco.tsx'
 import { CURSOS } from '../data/cursos.ts'
 import { datos } from '../lib/datos.ts'
 
-const FORMULA = '=APRENDER("inteligencia artificial"; tu_profesión)'
 const FOTO =
   'https://images.unsplash.com/photo-1662239090914-1da951eaeda4?ixlib=rb-4.1.0&auto=format&fit=crop&w=1800&q=70'
-
-/** Escribe la fórmula de la portada como si se tipeara en la barra de Excel. */
-function BarraDeFormula() {
-  const sinMovimiento =
-    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  const [letras, setLetras] = useState(sinMovimiento ? FORMULA.length : 0)
-
-  useEffect(() => {
-    if (letras >= FORMULA.length) return
-    const reloj = window.setTimeout(() => setLetras((n) => n + 1), 38)
-    return () => window.clearTimeout(reloj)
-  }, [letras])
-
-  const corte = FORMULA.indexOf('(')
-  return (
-    <div className="formula" aria-hidden="true">
-      <span className="formula__ref">A1</span>
-      <span className="formula__fx">fx</span>
-      <span className="formula__texto">
-        <span className="fn">{FORMULA.slice(0, Math.min(letras, corte))}</span>
-        {letras > corte ? FORMULA.slice(corte, letras) : ''}
-        <span className="formula__cursor" />
-      </span>
-    </div>
-  )
-}
 
 export default function Inicio() {
   const [ocupacion, setOcupacion] = useState<Record<string, number> | null>(null)
@@ -69,7 +42,7 @@ export default function Inicio() {
           />
           <div className="contenedor">
             <div className="portada__hoja">
-              <BarraDeFormula />
+              <p className="portada__cinta">Academia virtual · Inscripción abierta</p>
               <div className="portada__texto">
             <h1 id="titulo-portada">
               Inteligencia artificial para <span className="celda">tu profesión</span>
